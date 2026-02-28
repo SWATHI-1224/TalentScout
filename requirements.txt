@@ -1,8 +1,0 @@
-# pip install streamlit openai python-dotenv
-# python -m pip uninstall openai -y
-# python -m pip install openai==0.28
-
-
-# now
-# venv\Scripts\Activate
-# .\venv\Scripts\python.exe -m streamlit run app.py
