@@ -28,17 +28,20 @@ If error:
 
 Set-ExecutionPolicy RemoteSigned -Scope Process
 .\venv\Scripts\Activate
+
 2️⃣ Install Required Libraries
 
 Inside activated venv:
 
 pip install streamlit python-dotenv google-generativeai pypdf openai
+
 3️⃣ Run Streamlit App
 streamlit run app.py
 
 OR
 
 .\venv\Scripts\python.exe -m streamlit run app.py
+
 4️⃣ Libraries You Need
 Purpose Library
 UI streamlit
@@ -47,6 +50,7 @@ LLM (Gemini) google-generativeai
 LLM (OpenAI) openai
 
 Resume PDF Reading pypdf
+
 5️⃣ Add Resume PDF Upload (Short Code)
 import streamlit as st
 import pypdf
