@@ -1,67 +1,69 @@
-📌 TalentScout – AI Hiring Assistant
-🔹 Overview
+📌 1. Project Overview
 
-AI-powered chatbot that simulates an initial technical screening process for candidates.
+TalentScout is an AI-powered Hiring Assistant Chatbot designed to streamline the initial candidate screening process for a technology recruitment agency.
 
-🔹 Features
+The chatbot:
 
-Streamlit-based interactive UI
+Greets candidates professionally
+Collects essential candidate information
+Asks tech-stack–specific technical questions
+Maintains conversation context
+Handles unexpected inputs gracefully
+Ends conversation professionally
+The system uses a Large Language Model (LLM) to dynamically generate relevant technical questions based on the candidate’s declared tech stack.
 
-Resume Upload (PDF parsing)
-
-Candidate Information Collection
-
-Tech Stack-based Question Generation
-
-Resume-based contextual questioning
-
-Live Technical & Communication Scoring
-
-Input Validation (Phone, Email)
-
-Fallback Mechanism
-
-Structured Interview Flow
-
-🔹 Tech Stack
-
-Python
-
-Streamlit
-
-Google Gemini (LLM)
-
-PyPDF
-
+This project demonstrates practical implementation of:
 Prompt Engineering
+Context-aware AI conversations
+LLM integration
+Secure handling of user input
 
-🔹 Installation
-git clone <repo-link>
-cd TalentScout
-pip install -r requirements.txt
+instalation process
+
+1️⃣ Activate Virtual Environment (Windows)
+python -m venv venv
+venv\Scripts\Activate
+
+If error:
+
+Set-ExecutionPolicy RemoteSigned -Scope Process
+.\venv\Scripts\Activate
+2️⃣ Install Required Libraries
+
+Inside activated venv:
+
+pip install streamlit python-dotenv google-generativeai pypdf openai
+3️⃣ Run Streamlit App
 streamlit run app.py
-🔹 Deployment
 
-Deployed using Streamlit Community Cloud.
+OR
 
-🔹 Prompt Strategy
+.\venv\Scripts\python.exe -m streamlit run app.py
+4️⃣ Libraries You Need
+Purpose Library
+UI streamlit
+API Key Handling python-dotenv
+LLM (Gemini) google-generativeai
+LLM (OpenAI) openai
 
-Designed structured prompts to:
+Resume PDF Reading pypdf
+5️⃣ Add Resume PDF Upload (Short Code)
+import streamlit as st
+import pypdf
 
-Collect candidate information
+uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
 
-Generate contextual technical questions
+if uploaded_file:
+reader = pypdf.PdfReader(uploaded_file)
+text = ""
+for page in reader.pages:
+text += page.extract_text()
+st.session_state["resume_text"] = text
+st.success("Resume uploaded successfully!")
 
-Prevent off-topic responses
-
-Maintain conversation flow
-
-🔹 Future Improvements
-
-Sentiment analysis
-
-Database integration
-
-Cloud scaling
-
-Multilingual support
+6️⃣ Add to requirements.txt
+streamlit
+python-dotenv
+google-generativeai
+openai
+pypdf
